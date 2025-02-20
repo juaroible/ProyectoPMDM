@@ -1,5 +1,6 @@
 package com.example.proyectopmdm.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -13,10 +14,22 @@ import com.example.proyectopmdm.domain.model.Movie
 
 class MainActivity : AppCompatActivity() {
 
+    // Instancia del ViewModel
     private val viewModel: MovieViewModel by viewModels { MovieViewModel.Factory }
+    // Binding
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private val adapter = MovieListAdapter()
+    // Instancia del adaptador
+    private val adapter = MovieListAdapter { movie -> openMovieDetails(movie) }
 
+    // Constantes para los nombres de las claves de los extras
+    companion object {
+        const val MOVIE_TITLE = "title"
+        const val MOVIE_POSTER = "poster"
+    }
+
+    /**
+     * Método llamado cuando se crea la actividad
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,16 +40,32 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        // Configuración del RecyclerView
         binding.movieList.adapter = adapter
         viewModel.fetchMovies()
         viewModel.movies.observe(this) { movies ->
             adapter.submitList(movies)
         }
 
+        // Configuración del ProgressBar
         viewModel.loading.observe(this) { isLoading ->
             binding.progressBar.isVisible = isLoading
         }
 
+    }
+
+    /**
+     * Abre la actividad de detalles de la película
+     *
+     * @param movie Película seleccionada
+     */
+    private fun openMovieDetails(movie: Movie) {
+        val intent = Intent(this, MovieDetail::class.java)
+            intent.putExtra(MOVIE_TITLE, movie.title)
+            intent.putExtra(MOVIE_POSTER, movie.posterUrl)
+
+        // Inicia la actividad con el intent
+        startActivity(intent)
     }
 
 }
