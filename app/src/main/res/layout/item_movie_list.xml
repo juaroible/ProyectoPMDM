@@ -7,7 +7,7 @@
     android:background="#E0FF80"
     android:padding="8dp">
 
-    <!-- Movie Poster Image -->
+    <!-- Poster -->
     <ImageView
         android:id="@+id/movie_poster"
         android:layout_width="0dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/backgrounds/scenic" />
 
-    <!-- Movie Title Text -->
+    <!-- Titulo -->
     <TextView
         android:id="@+id/movie_title"
         android:layout_width="match_parent"

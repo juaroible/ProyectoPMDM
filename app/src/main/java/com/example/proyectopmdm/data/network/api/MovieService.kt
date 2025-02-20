@@ -12,7 +12,7 @@ interface MovieService {
     /**
      * Obtiene la lista de películas populares (añade movie/popular al endpoint de la API)
      */
-    @GET("movie/popular")
+    @GET("movie/top_rated")
     suspend fun getPopularMovies(
         @Query("language") language: String = "es-ES",
         @Query("page") page: Int = 1

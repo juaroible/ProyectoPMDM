@@ -61,8 +61,8 @@ class MainActivity : AppCompatActivity() {
      */
     private fun openMovieDetails(movie: Movie) {
         val intent = Intent(this, MovieDetail::class.java)
-            intent.putExtra(MOVIE_TITLE, movie.title)
-            intent.putExtra(MOVIE_POSTER, movie.posterUrl)
+        intent.putExtra(MOVIE_TITLE, movie.title)
+        intent.putExtra(MOVIE_POSTER, movie.posterUrl)
 
         // Inicia la actividad con el intent
         startActivity(intent)

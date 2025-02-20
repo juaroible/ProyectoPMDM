@@ -8,7 +8,7 @@
     tools:context=".ui.MainActivity"
     android:background="#FFFFFF">
 
-    <!-- RecyclerView with grid layout for movies -->
+    <!-- RecyclerView con GridLayout para la lista -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movie_list"
         android:layout_width="0dp"
@@ -24,7 +24,7 @@
         android:clipToPadding="false"
         android:scrollbars="vertical"/>
 
-    <!-- Centered progress bar with improved styling -->
+    <!-- Barra de progreso -->
     <ProgressBar
         android:id="@+id/progress_bar"
         style="?android:attr/progressBarStyleLarge"
